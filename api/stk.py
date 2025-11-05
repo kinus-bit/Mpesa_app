@@ -12,6 +12,7 @@ PASS_KEY = "bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919"
 TIMESTAMP = datetime.now().strftime('%Y%m%d%H%M%S')
 phone_num = "254768332588"
 bank = "1318784263"
+amount = "1000"
 def generate_password():
     password = f'{SHORT_CODE}{PASS_KEY}{TIMESTAMP}'
     encodedPassword = base64.b64encode(password.encode()).decode() #encoding password
@@ -28,7 +29,7 @@ def stk_push():
    "Password": encodedPassword,    
    "Timestamp":TIMESTAMP,    
    "TransactionType": "CustomerPayBillOnline",    
-   "Amount": "10000",    
+   "Amount": amount,    
    "PartyA":phone_num,      
    "PartyB":"174379",    
    "PhoneNumber":phone_num,    
