@@ -4,6 +4,10 @@ from stk import stk_push
 
 app = FastAPI()
 
+@app.get('/')
+def home():
+    return {'message':'hello world'}
+
 @app.get("/get_token")
 def get_token():
     access_token = getaccess_token()
