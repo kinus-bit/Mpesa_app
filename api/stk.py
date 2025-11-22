@@ -1,18 +1,24 @@
+#this API Initiates online payment on behalf of a customer.
 import requests
 import base64
 from datetime import datetime
 from auth_token import getaccess_token
 
-
-
+#getaccess returns two objects ,we use access_token to access the token
 access_token = getaccess_token()['access_token']
+
+#post url
 STK_URL = "https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest"
+
 SHORT_CODE = "174379"
+
+#build by encripting shortcode+passkey+timestamp
 PASS_KEY = "bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919"
 TIMESTAMP = datetime.now().strftime('%Y%m%d%H%M%S')
 phone_num = "254768332588"
 bank = "1318784263"
-amount = "1000"
+amount = "1"
+
 def generate_password():
     password = f'{SHORT_CODE}{PASS_KEY}{TIMESTAMP}'
     encodedPassword = base64.b64encode(password.encode()).decode() #encoding password
